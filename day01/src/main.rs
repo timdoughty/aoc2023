@@ -84,7 +84,6 @@ fn extract_calibration_words() -> Result<String, Box<dyn std::error::Error>> {
     number_words.insert("seven", 7);
     number_words.insert("eight", 8);
     number_words.insert("nine", 9);
-    let mut count = 0;
 
     for line in reader.lines() {
         let line: String = line?;
@@ -112,13 +111,8 @@ fn extract_calibration_words() -> Result<String, Box<dyn std::error::Error>> {
         if second.is_none() {
             second = first;
         }
-        count += 1;
-        println!("Line: {}", count);
-        println!("\tFirst value: {}", first.unwrap());
-        println!("\tLast value: {}", second.unwrap());
         let combined = format!("{}{}", first.unwrap(), second.unwrap());
         let combined_value = combined.parse::<u32>().unwrap();
-        println!("\tCalibration Value: {}", combined_value);
         all_values.push(combined_value);
     }
 
