@@ -17,6 +17,13 @@ fn main() {
 }
 
 fn extract_calibration() -> Result<String, Box<dyn std::error::Error>> {
+    /*
+     * Day 1, Part 1
+     * 
+     * Extracts the calibration numbers from the input file and sums them.
+     * Utilizes two iterators to increase performance at the cost of memory.
+     * 
+     */
     let path: &Path = Path::new("input.txt");
     let file: File = File::open(path)?;
     let reader: BufReader<File> = BufReader::new(file);
@@ -55,6 +62,14 @@ fn extract_calibration() -> Result<String, Box<dyn std::error::Error>> {
 }
 
 fn extract_calibration_words() -> Result<String, Box<dyn std::error::Error>> {
+    /*
+     * Day 1, Part 2
+     * 
+     * Extracts the calibration numbers from the input file and sums them, but accounts
+     * for the numbers being written out as words.
+     * 
+     * Unfortunately, the double iterator solution can't handle matching substrings...
+     */
     let path: &Path = Path::new("input.txt");
     let file: File = File::open(path)?;
     let reader: BufReader<File> = BufReader::new(file);
